@@ -1,1 +1,54 @@
+<html>
 
+<head>
+    <title>Scientific Data Categorization</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+    div {
+        border: 3px solid black;
+        margin: 0px 100px 0px 100px;
+    }
+    
+    input[type='submit'] {
+        font-weight: 700;
+    }
+    
+    body[background] {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+</style>
+
+<body background="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9_v4k2HaE2C-Ta4m0sX9E46KAvYOdx1KE15Ty4ajh_IpZnIUPTw">
+    <center>
+        <br>
+        <h1>Scientific Data Categorization</h1><br>
+        <div>
+            <form action="/predict" method="post" enctype="multipart/form-data">
+                <br><br>
+                <b>Upload Research Paper: </b><input type="file" name="uploaded_file" class="upload" value="Upload"><br><br><br>
+                <input type="submit" value="Predict"><br> {% if label %} {{ label }} {% endif %} <br>
+            </form>
+        </div>
+        <div>
+            <h2>Keywords</h2>
+            {% if keyword %} {{ keyword }} {% endif %}
+        </div>
+        <div>
+            <h2>Recommendation</h2>
+            <table>
+                {% for title,link in recommendations %}
+                <tr>
+                    <td>{{title}}</td>
+                    <td><a href={{link}}>Go to this  website.</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </center>
+</body>
+
+</html>
